@@ -59,7 +59,7 @@ public class StringToSetSearchTypeConverter implements AttributeConverter<Set<Se
 	}
 
 	private boolean filter(String value) {
-		return !(value.strip().equals(",") || value.strip().equals(""));
+		return !(value.trim().equals(",") || value.trim().equals(""));
 	}
 
 	public SearchType valueOf(String value, List<Long> ids) {

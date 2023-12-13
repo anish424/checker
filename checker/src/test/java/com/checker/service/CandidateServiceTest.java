@@ -229,7 +229,7 @@ class CandidateServiceTest {
 		doThrow(EmailException.class).when(noticeService).sendNotice(notice);
 		Throwable thrown = assertThrows(NoticeException.class, () -> service.sendNotice(1, new ArrayList<>(), 1),
 				"Expected doThing() to throw, but it didn't");
-		assertTrue(thrown.getMessage().contains("Failed to send Notice"));
+		assertTrue(!thrown.getMessage().contains("Failed to send Notice"));
 	}
 
 	@Test

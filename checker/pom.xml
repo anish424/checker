@@ -23,7 +23,7 @@
 	</licenses>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<jwt.version>0.8.0</jwt.version>
@@ -183,7 +183,9 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
-
+<profiles>
+<profile>
+  <id>coverage</id>
 	<build>
 		<plugins>
 
@@ -234,7 +236,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.4</version>
+				<version>0.8.8</version>
 				<executions>
 					<execution>
 						<goals>
@@ -248,9 +250,17 @@
 							<goal>report</goal>
 						</goals>
 					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
+</profile>
+</profiles>
 </project>
